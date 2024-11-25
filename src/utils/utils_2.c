@@ -1,49 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   chk_utils.c                                        :+:      :+:    :+:   */
+/*   utils_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fluzi <fluzi@student.42roma.it>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/29 16:38:48 by fluzi             #+#    #+#             */
-/*   Updated: 2024/11/25 13:45:33 by fluzi            ###   ########.fr       */
+/*   Created: 2024/11/25 15:11:13 by fluzi             #+#    #+#             */
+/*   Updated: 2024/11/25 17:31:47 by fluzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/philo.h"
 
-static int	ft_strlen(const char *str)
+void	single_philosopher(t_philo *philo)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	usleep((philo->first->time_to_die * 1000) + 500);
+	printf("Philo 1: died\n");
 }
 
-bool	ft_isdigit(char *str)
+int	u_max_meals(int ac, char **av)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (!(str[i] >= 48 && str[i] <= 57))
-			return (false);
-		i++;
-	}
-	return (true);
+	if (ac == 5)
+		return (-1);
+	return (ft_atoi(av[5]));
 }
 
-bool	ft_atoi_ck(const char *str)
+int	ft_atoi(const char *str)
 {
-	long	result;
-	int		sign;
-	long	ret;
+	int	result;
+	int	sign;
 
-	if (ft_strlen(str) > 62)
-		return (false);
 	result = 0;
 	sign = 1;
 	while (*str == 32 || (*str >= 9 && *str <= 13))
@@ -59,8 +45,5 @@ bool	ft_atoi_ck(const char *str)
 		result = result * 10 + *str - '0';
 		str++;
 	}
-	ret = result * sign;
-	if (ret > 2147483647 || ret < -2147483648 || ret <= 0)
-		return (false);
-	return (true);
+	return (result * sign);
 }

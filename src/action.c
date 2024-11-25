@@ -6,7 +6,7 @@
 /*   By: fluzi <fluzi@student.42roma.it>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:21:24 by federico2         #+#    #+#             */
-/*   Updated: 2024/11/21 15:45:29 by fluzi            ###   ########.fr       */
+/*   Updated: 2024/11/25 15:07:02 by fluzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ void	sleeping(t_philo *philo)
 	usleep(philo->first->time_to_sleep * 1000);
 }
 
-void eat(t_philo *philo)
+void	eat(t_philo *philo)
 {
-    print_msg("is eating", philo);
-    pthread_mutex_lock(&philo->eating);
-    philo->last_meal_time = get_current_time();
-    philo->number_of_meals++;
-    usleep(philo->first->time_to_eat * 1000);
-    pthread_mutex_unlock(&philo->eating);
-    pthread_mutex_unlock(philo->r_fork);
-    pthread_mutex_unlock(philo->l_fork);
+	print_msg("is eating", philo);
+	pthread_mutex_lock(&philo->eating);
+	philo->last_meal_time = get_current_time();
+	philo->number_of_meals++;
+	usleep(philo->first->time_to_eat * 1000);
+	pthread_mutex_unlock(&philo->eating);
+	pthread_mutex_unlock(philo->r_fork);
+	pthread_mutex_unlock(philo->l_fork);
 }

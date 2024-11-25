@@ -6,22 +6,22 @@
 /*   By: fluzi <fluzi@student.42roma.it>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 17:21:33 by fluzi             #+#    #+#             */
-/*   Updated: 2024/11/21 15:31:34 by fluzi            ###   ########.fr       */
+/*   Updated: 2024/11/25 17:10:01 by fluzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/philo.h"
 
-void take_fork(t_philo *philo)
+void	take_fork(t_philo *philo)
 {
-	if(philo->id % 2 == 0)
+	if (philo->id % 2 == 0)
 	{
 		pthread_mutex_lock(philo->r_fork);
 		print_msg("has taken a fork", philo);
 		pthread_mutex_lock(philo->l_fork);
 		print_msg("has taken a fork", philo);
 	}
-	else 
+	else
 	{
 		print_msg("has taken a fork", philo);
 		pthread_mutex_lock(philo->l_fork);
@@ -29,42 +29,48 @@ void take_fork(t_philo *philo)
 		pthread_mutex_lock(philo->r_fork);
 	}
 }
-void *philo_routine(void *arg)
+
+void	*philo_routine(void *arg)
 {
-	t_philo *philo;
-	
+	t_philo	*philo;
+
 	philo = (t_philo *)arg;
-	while(chk_philosopher_dead(philo->first) == 0)
+	if (philo->first->number_of_philo == 1)
+		single_philosopher(philo);
+	else
 	{
-		pthread_mutex_lock(&philo->first->print);
-		pthread_mutex_unlock(&philo->first->print);
-		take_fork(philo);
-		if(chk_status(philo, 0) == 1)
-			break;
-		eat(philo);
-		if(chk_status(philo, 1) == 1)
-			break;
-		sleeping(philo);
-		if(chk_status(philo, 1) == 1)
-			break;
-		thinking(philo);
-		if(chk_status(philo, 1) == 1)
-			break;
+		while (chk_philosopher_dead(philo->first) == 0)
+		{
+			take_fork(philo);
+			if (chk_status(philo, 0) == 1)
+				break ;
+			eat(philo);
+			if (chk_status(philo, 1) == 1)
+				break ;
+			sleeping(philo);
+			if (chk_status(philo, 1) == 1)
+				break ;
+			thinking(philo);
+			if (chk_status(philo, 1) == 1)
+				break ;
+		}
 	}
 	return (NULL);
 }
+
 void	begin_philosophers_routine(t_first *parameters)
 {
-	int	i;
-	pthread_t id_monitor;
+	int			i;
+	pthread_t	id_monitor;
 
 	i = 0;
 	while (i < parameters->number_of_philo)
 	{
-		pthread_create(&parameters->philo[i].thread_id, NULL, &philo_routine, (void *) &parameters->philo[i]);
+		pthread_create(&parameters->philo[i].thread_id, NULL,
+			&philo_routine, (void *) &parameters->philo[i]);
 		i++;
 	}
-	pthread_create(&id_monitor, NULL, &monitoring_philo, (void *) parameters);	
+	pthread_create(&id_monitor, NULL, &monitoring_philo, (void *) parameters);
 	i = 0;
 	while (i < parameters->number_of_philo)
 	{
@@ -73,4 +79,3 @@ void	begin_philosophers_routine(t_first *parameters)
 	}
 	pthread_join(id_monitor, NULL);
 }
-
