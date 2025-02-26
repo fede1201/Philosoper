@@ -6,7 +6,7 @@
 /*   By: fluzi <fluzi@student.42roma.it>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:21:24 by federico2         #+#    #+#             */
-/*   Updated: 2024/11/25 15:07:02 by fluzi            ###   ########.fr       */
+/*   Updated: 2025/02/26 15:05:28 by fluzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	thinking(t_philo *philo)
 {
 	print_msg("is thinking", philo);
-	usleep(philo->first->time_to_sleep * 1000);
+	usleep(1000);
 }
 
 void	sleeping(t_philo *philo)

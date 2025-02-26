@@ -6,7 +6,7 @@
 /*   By: fluzi <fluzi@student.42roma.it>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:11:13 by fluzi             #+#    #+#             */
-/*   Updated: 2024/11/25 17:31:47 by fluzi            ###   ########.fr       */
+/*   Updated: 2024/11/26 13:18:20 by fluzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	single_philosopher(t_philo *philo)
 {
 	usleep((philo->first->time_to_die * 1000) + 500);
-	printf("Philo 1: died\n");
 }
 
 int	u_max_meals(int ac, char **av)

@@ -6,7 +6,7 @@
 /*   By: fluzi <fluzi@student.42roma.it>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 14:54:22 by fluzi             #+#    #+#             */
-/*   Updated: 2024/11/25 17:27:29 by fluzi            ###   ########.fr       */
+/*   Updated: 2024/11/27 16:57:32 by fluzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static t_philo	*safe_malloc_philo(int number)
 {
 	t_philo	*ret;
 
-	ret = (t_philo *) calloc(sizeof(t_philo), (number + 1));
+	ret = (t_philo *) malloc(sizeof(t_philo) * (number + 1));
 	if (!ret)
 		return (NULL);
 	ret[number] = (t_philo){0};
