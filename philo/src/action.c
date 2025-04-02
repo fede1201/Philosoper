@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   action.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fluzi <fluzi@student.42roma.it>            +#+  +:+       +#+        */
+/*   By: fluzi <fluzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:21:24 by federico2         #+#    #+#             */
-/*   Updated: 2025/02/26 15:05:28 by fluzi            ###   ########.fr       */
+/*   Updated: 2025/02/26 16:31:15 by fluzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	thinking(t_philo *philo)
 {
 	print_msg("is thinking", philo);
-	usleep(1000);
 }
 
 void	sleeping(t_philo *philo)

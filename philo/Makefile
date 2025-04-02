@@ -2,7 +2,7 @@ NAME = philo
 
 CC = gcc
 
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror -g -gdwarf-4
 
 SOURCES = 	./src/*.c \
 			./src/chk/*.c \

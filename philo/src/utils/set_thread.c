@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_thread.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fluzi <fluzi@student.42roma.it>            +#+  +:+       +#+        */
+/*   By: fluzi <fluzi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 17:21:33 by fluzi             #+#    #+#             */
-/*   Updated: 2024/11/25 17:10:01 by fluzi            ###   ########.fr       */
+/*   Updated: 2025/02/26 16:27:50 by fluzi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void	take_fork(t_philo *philo)
 	}
 	else
 	{
-		print_msg("has taken a fork", philo);
 		pthread_mutex_lock(philo->l_fork);
 		print_msg("has taken a fork", philo);
 		pthread_mutex_lock(philo->r_fork);
+		print_msg("has taken a fork", philo);
 	}
 }
 
